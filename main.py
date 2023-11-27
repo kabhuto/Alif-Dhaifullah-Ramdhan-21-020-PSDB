@@ -4,7 +4,7 @@ import streamlit as st
 from sklearn.preprocessing import StandardScaler
 
 # Load the trained model
-with open('c:/psdb/gridrandomforestzscore.pkl', 'rb') as file_model:
+with open('gridrandomforestzscore.pkl', 'rb') as file_model:
     model_rf = pickle.load(file_model)
 
 # UI components
