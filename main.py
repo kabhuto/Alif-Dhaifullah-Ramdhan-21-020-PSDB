@@ -3,7 +3,7 @@ import pandas as pd
 import streamlit as st
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import StandardScaler
-from sklearn.externals import joblib  # For older scikit-learn versions
+import joblib  # Import joblib directly
 
 # Load or train the model
 try:
