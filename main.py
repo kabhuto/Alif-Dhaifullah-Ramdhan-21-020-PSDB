@@ -1,25 +1,11 @@
 import pickle
 import pandas as pd
 import streamlit as st
-from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import StandardScaler
-import joblib  # Import joblib directly
 
-# Load or train the model
-try:
-    # Load the trained model
-    with open('gridrandomforestzscore.pkl', 'rb') as file_model:
-        model_rf = pickle.load(file_model)
-except FileNotFoundError:
-    # Train and save the model if the file is not found
-    X_train = ...  # Load your training data
-    y_train = ...  # Load your target labels
-    model_rf = RandomForestClassifier()
-    model_rf.fit(X_train, y_train)
-
-    # Save the trained model
-    with open('gridrandomforestzscore.pkl', 'wb') as file_model:
-        pickle.dump(model_rf, file_model)
+# Load the trained model
+with open('gridrandomforestzscore.pkl', 'rb') as file_model:
+    model_rf = pickle.load(file_model)
 
 # UI components
 st.title("Prediksi Penyakit Stroke Menggunakan Model Random Forest")
@@ -42,15 +28,15 @@ input_feature = {
 
 # Convert to DataFrame
 input_data = pd.DataFrame([input_feature])
-if st.button("cek prediksi"):
-    # Standardize input data
+if st.button ("cek prediksi"):
+# Standardize input data
     scaler = StandardScaler()
     input_data_scaled = scaler.fit_transform(input_data)
 
     # Make prediction
     prediction = model_rf.predict(input_data_scaled)
 
-    # Show prediction result
+# Show prediction result
     if prediction[0] == 0:
         st.write("Hasil Prediksi: Tidak Terkena stroke")
     else:
